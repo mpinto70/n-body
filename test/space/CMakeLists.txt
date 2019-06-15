@@ -1,5 +1,6 @@
 set(space_srcs
     ParticleTest.cpp
+    SystemTest.cpp
 )
 
 set(space_libs

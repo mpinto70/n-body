@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../geometry/vec3d.h"
+#include "geometry/vec3d.h"
 
 namespace space {
 
