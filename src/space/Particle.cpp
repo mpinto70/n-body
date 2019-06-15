@@ -12,7 +12,7 @@ Particle::Particle(double mass, geometry::vec3d position, geometry::vec3d veloci
 void Particle::move(double delta_t, const geometry::vec3d& force) {
     const auto acceleration = force / mass_;
     const auto delta_v = acceleration * delta_t;
-    position_ += velocity_ * delta_t + delta_v / 2 * delta_t;
+    position_ += velocity_ * delta_t + delta_v / (2 / delta_t); // p = p0 + v*dt + (dv/2) * dt
     velocity_ += delta_v;
 }
 }

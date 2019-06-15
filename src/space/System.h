@@ -11,6 +11,8 @@ public:
     const Particle& particle1() const { return particle1_; }
     const Particle& particle2() const { return particle2_; }
 
+    void step(double delta_t);
+
 private:
     Particle particle1_;
     Particle particle2_;
