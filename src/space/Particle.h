@@ -12,9 +12,9 @@ public:
 
     const geometry::vec3d& position() const noexcept { return position_; }
 
-    void move(double delta_t,
-          const geometry::vec3d& velocity,
-          const geometry::vec3d& acceleration);
+    void move(const geometry::vec3d& delta) {
+        position_ += delta;
+    }
 
 private:
     double mass_;
