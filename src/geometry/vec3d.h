@@ -1,10 +1,18 @@
 #pragma once
 
+#include <type_traits>
+
 namespace geometry {
 
 struct vec3d {
     double x, y, z;
 };
+
+static_assert(std::is_pod<vec3d>::value);
+
+constexpr vec3d I{ 1, 0, 0 };
+constexpr vec3d J{ 0, 1, 0 };
+constexpr vec3d K{ 0, 0, 1 };
 
 constexpr bool operator==(const vec3d& u, const vec3d& v) noexcept {
     return u.x == v.x && u.y == v.y && u.z == v.z;
@@ -12,6 +20,18 @@ constexpr bool operator==(const vec3d& u, const vec3d& v) noexcept {
 
 constexpr bool operator!=(const vec3d& u, const vec3d& v) noexcept {
     return not(u == v);
+}
+
+constexpr vec3d operator-(const vec3d& v) noexcept {
+    return vec3d{ -v.x, -v.y, -v.z };
+}
+
+constexpr vec3d operator+(const vec3d& u, const vec3d& v) noexcept {
+    return vec3d{ u.x + v.x, u.y + v.y, u.z + v.z };
+}
+
+constexpr vec3d operator-(const vec3d& u, const vec3d& v) noexcept {
+    return vec3d{ u.x - v.x, u.y - v.y, u.z - v.z };
 }
 
 constexpr vec3d operator*(const vec3d& v, double s) noexcept {
@@ -35,8 +55,4 @@ constexpr vec3d cross(const vec3d& u, const vec3d& v) noexcept {
         u.z * v.x - u.x * v.z,
         u.x * v.y - u.y * v.x };
 }
-
-constexpr vec3d I{ 1, 0, 0 };
-constexpr vec3d J{ 0, 1, 0 };
-constexpr vec3d K{ 0, 0, 1 };
 }

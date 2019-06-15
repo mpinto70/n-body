@@ -21,15 +21,30 @@ TEST(vec3d, creation) {
     static_assert(V == V);
 }
 
-TEST(vec3d, scalar_multiplication) {
-    static_assert(dot(V, I) == 1);
-    static_assert(dot(V, J) == 2);
-    static_assert(dot(V, K) == 4);
+TEST(vec3d, negation) {
+    static_assert(-U == vec3d{ -7, -8, -9 });
+    static_assert(-V == vec3d{ -1, -2, -4 });
+}
 
-    static_assert(dot(U, V) == 59);
-    static_assert(dot(I, J) == 0);
-    static_assert(dot(I, K) == 0);
-    static_assert(dot(J, K) == 0);
+TEST(vec3d, add) {
+    static_assert(U + V == vec3d{ 8, 10, 13 });
+    static_assert(V + U == vec3d{ 8, 10, 13 });
+}
+
+TEST(vec3d, subtract) {
+    static_assert(U - V == vec3d{ 6, 6, 5 });
+    static_assert(V - U == vec3d{ -6, -6, -5 });
+}
+
+TEST(vec3d, scalar) {
+    static_assert(I * 3 == vec3d{ 3, 0, 0 });
+    static_assert(U * 7 == vec3d{ 49, 56, 63 });
+
+    static_assert(3 * I == vec3d{ 3, 0, 0 });
+    static_assert(7 * U == vec3d{ 49, 56, 63 });
+
+    static_assert(I / 2 == vec3d{ 0.5, 0, 0 });
+    static_assert(V / 2 == vec3d{ 0.5, 1, 2 });
 }
 
 TEST(vec3d, dot) {
@@ -48,5 +63,19 @@ TEST(vec3d, cross) {
     static_assert(cross(I, I) == zero);
     static_assert(cross(J, J) == zero);
     static_assert(cross(K, K) == zero);
+    static_assert(cross(U, U) == zero);
+    static_assert(cross(V, V) == zero);
+
+    static_assert(cross(I, J) == K);
+    static_assert(cross(J, K) == I);
+    static_assert(cross(K, I) == J);
+
+    static_assert(cross(J, I) == -K);
+    static_assert(cross(K, J) == -I);
+    static_assert(cross(I, K) == -J);
+
+    constexpr vec3d UV{ 14, -19, 6 };
+    static_assert(cross(U, V) == UV);
+    static_assert(cross(V, U) == -UV);
 }
 }
