@@ -6,6 +6,18 @@ namespace geometry {
 
 struct vec3d {
     double x, y, z;
+    vec3d& operator*=(double s) noexcept {
+        x *= s;
+        y *= s;
+        z *= s;
+        return *this;
+    }
+    vec3d& operator/=(double s) noexcept {
+        x /= s;
+        y /= s;
+        z /= s;
+        return *this;
+    }
 };
 
 static_assert(std::is_pod<vec3d>::value);
