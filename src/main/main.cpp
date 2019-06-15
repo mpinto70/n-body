@@ -3,7 +3,7 @@
 #include <iostream>
 
 namespace geometry {
-std::ostream& operator << (std::ostream& out, const vec3d& v) {
+std::ostream& operator<<(std::ostream& out, const vec3d& v) {
     out << v.x << "," << v.y << "," << v.z;
     return out;
 }
