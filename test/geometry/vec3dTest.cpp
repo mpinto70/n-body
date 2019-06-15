@@ -29,11 +29,19 @@ TEST(vec3d, negation) {
 TEST(vec3d, add) {
     static_assert(U + V == vec3d{ 8, 10, 13 });
     static_assert(V + U == vec3d{ 8, 10, 13 });
+
+    vec3d w = U;
+    w += V;
+    EXPECT_EQ(w, U + V);
 }
 
 TEST(vec3d, subtract) {
     static_assert(U - V == vec3d{ 6, 6, 5 });
     static_assert(V - U == vec3d{ -6, -6, -5 });
+
+    vec3d w = U;
+    w -= V;
+    EXPECT_EQ(w, U - V);
 }
 
 TEST(vec3d, scalar) {

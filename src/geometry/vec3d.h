@@ -6,6 +6,18 @@ namespace geometry {
 
 struct vec3d {
     double x, y, z;
+    vec3d& operator+=(const vec3d& v) noexcept {
+        x += v.x;
+        y += v.y;
+        z += v.z;
+        return *this;
+    }
+    vec3d& operator-=(const vec3d& v) noexcept {
+        x -= v.x;
+        y -= v.y;
+        z -= v.z;
+        return *this;
+    }
     vec3d& operator*=(double s) noexcept {
         x *= s;
         y *= s;
