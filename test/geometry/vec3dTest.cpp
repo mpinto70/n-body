@@ -6,6 +6,9 @@ namespace geometry {
 
 constexpr vec3d U{ 7, 8, 9 };
 constexpr vec3d V{ 1, 2, 4 };
+constexpr vec3d I{ 1, 0, 0 };
+constexpr vec3d J{ 0, 1, 0 };
+constexpr vec3d K{ 0, 0, 1 };
 
 TEST(vec3d, creation) {
     static_assert(U.x == 7);
@@ -85,5 +88,36 @@ TEST(vec3d, cross) {
     constexpr vec3d UV{ 14, -19, 6 };
     static_assert(cross(U, V) == UV);
     static_assert(cross(V, U) == -UV);
+}
+
+TEST(vec3d, size_square) {
+    constexpr vec3d zero{ 0, 0, 0 };
+    static_assert(size_square(zero) == 0);
+    static_assert(size_square(I) == 1);
+    static_assert(size_square(J) == 1);
+    static_assert(size_square(K) == 1);
+
+    static_assert(size_square(U) == 194);
+    static_assert(size_square(V) == 21);
+}
+
+TEST(vec3d, size) {
+    constexpr vec3d zero{ 0, 0, 0 };
+    EXPECT_EQ(size(zero), 0);
+    EXPECT_EQ(size(I), 1);
+    EXPECT_EQ(size(J), 1);
+    EXPECT_EQ(size(K), 1);
+
+    EXPECT_EQ(size(U), std::sqrt(194));
+    EXPECT_EQ(size(V), std::sqrt(21));
+}
+
+TEST(vec3d, unity) {
+    EXPECT_EQ(unity(I), I);
+    EXPECT_EQ(unity(J), J);
+    EXPECT_EQ(unity(K), K);
+
+    EXPECT_EQ(unity(U), U / std::sqrt(194));
+    EXPECT_EQ(unity(V), V / std::sqrt(21));
 }
 }

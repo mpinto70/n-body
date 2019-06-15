@@ -8,11 +8,9 @@ std::ostream& operator<<(std::ostream& out, const vec3d& v) {
     return out;
 }
 }
+
 int main() {
     const geometry::vec3d v = { 1.0, 2.0, 3.0 };
 
     std::cout << v << std::endl;
-    std::cout << geometry::I << std::endl;
-    std::cout << geometry::J << std::endl;
-    std::cout << geometry::K << std::endl;
 }

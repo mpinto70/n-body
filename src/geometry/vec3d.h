@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cmath>
 #include <type_traits>
 
 namespace geometry {
@@ -33,10 +34,6 @@ struct vec3d {
 };
 
 static_assert(std::is_pod<vec3d>::value);
-
-constexpr vec3d I{ 1, 0, 0 };
-constexpr vec3d J{ 0, 1, 0 };
-constexpr vec3d K{ 0, 0, 1 };
 
 constexpr bool operator==(const vec3d& u, const vec3d& v) noexcept {
     return u.x == v.x && u.y == v.y && u.z == v.z;
@@ -78,5 +75,17 @@ constexpr vec3d cross(const vec3d& u, const vec3d& v) noexcept {
     return { u.y * v.z - u.z * v.y,
         u.z * v.x - u.x * v.z,
         u.x * v.y - u.y * v.x };
+}
+
+constexpr double size_square(const vec3d& v) noexcept {
+    return dot(v, v);
+}
+
+inline double size(const vec3d& v) noexcept {
+    return std::sqrt(size_square(v));
+}
+
+inline vec3d unity(const vec3d& v) noexcept {
+    return v / size(v);
 }
 }
