@@ -2,8 +2,17 @@
 
 #include <iostream>
 
+namespace geometry {
+std::ostream& operator << (std::ostream& out, const vec3d& v) {
+    out << v.x << "," << v.y << "," << v.z;
+    return out;
+}
+}
 int main() {
     const geometry::vec3d v = { 1.0, 2.0, 3.0 };
 
-    std::cout << v.x << "," << v.y << "," << v.z << std::endl;
+    std::cout << v << std::endl;
+    std::cout << geometry::I << std::endl;
+    std::cout << geometry::J << std::endl;
+    std::cout << geometry::K << std::endl;
 }
