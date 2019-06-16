@@ -23,6 +23,36 @@ std::ostream& operator<<(std::ostream& out, const System& s) {
 }
 }
 
+namespace {
+size_t day = 0;
+template <bool PRINT>
+void simulate(space::System& s, size_t years, size_t print_interval) {
+    constexpr size_t days = 366;
+    constexpr double delta_t = 300; // 5 min
+    size_t print_day = print_interval;
+    for (size_t year = 0; year < years; ++year) {
+        for (size_t d = 0; d < days; ++d, ++day) {
+            if constexpr (PRINT) {
+                if (--print_day == 0) {
+                    std::cout << day << "  ,  " << s << std::endl;
+                    print_day = print_interval;
+                }
+            }
+            double t = 0;
+            while (t < 3600 * 24) {
+                s.step(delta_t);
+                t += delta_t;
+            }
+        }
+        std::cerr << '.';
+    }
+    if constexpr (PRINT) {
+        std::cout << day << "  ,  " << s << std::endl;
+    }
+    std::cerr << '\n';
+}
+}
+
 int main() {
     constexpr double earth_mass = 5.97237e24;     // mass in kg
     constexpr double distance_to_sun = 147.095e9; // perihelion
@@ -43,15 +73,11 @@ int main() {
 
     space::System s(particle1, particle2);
 
-    constexpr size_t days = 150000;
-    constexpr double delta_t = 300; // 5 min
-    for (size_t day = 0; day < days; ++day) {
-        std::cout << day << "  ,  " << s << std::endl;
-        double t = 0;
-        while (t < 3600 * 24) {
-            s.step(delta_t);
-            t += delta_t;
-        }
-    }
-    std::cout << days << "  ,  " << s << std::endl;
+    constexpr size_t years_transient = 1500;
+    constexpr size_t years_monitor = 200;
+    constexpr size_t print_interval = 1;
+    std::cerr << "skipping transient period of " << years_transient << " years\n";
+    simulate<false>(s, years_transient, print_interval);
+    std::cerr << "monitoring period of " << years_monitor << " years\n";
+    simulate<true>(s, years_monitor, print_interval);
 }
