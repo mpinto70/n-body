@@ -57,15 +57,15 @@ int main() {
     constexpr double earth_orbital_speed = 30.3e3;      // in m/s
     constexpr double sun_mass = 1.9885e30;
 
-    // earth positioned at the x axis with speed in the y direction
-    constexpr geometry::vec3d earth_position{ distance_earth_to_sun, 0, 0 };
-    constexpr geometry::vec3d earth_velocity{ 0, earth_orbital_speed, 0 };
-
     // sun at the center of the reference plan
     constexpr geometry::vec3d sun_position{ 0, 0, 0 };
     constexpr geometry::vec3d sun_velocity{ 0, 0, 0 };
-    const space::Particle earth_particle(earth_mass, earth_position, earth_velocity);
     const space::Particle sun_particle(sun_mass, sun_position, sun_velocity);
+
+    // earth positioned at the x(+) axis with speed in the y direction
+    constexpr geometry::vec3d earth_position{ distance_earth_to_sun, 0, 0 };
+    constexpr geometry::vec3d earth_velocity{ 0, earth_orbital_speed, 0 };
+    const space::Particle earth_particle(earth_mass, earth_position, earth_velocity);
 
     space::System s({ sun_particle, earth_particle });
 
