@@ -13,12 +13,10 @@ std::ostream& operator<<(std::ostream& out, const vec3d& v) {
 
 namespace space {
 std::ostream& operator<<(std::ostream& out, const System& s) {
-    out << geometry::size(s.particle2().position() - s.particle1().position()) << " , ";
-    out << s.particle1().position() << " , ";
-    out << s.particle2().position() << " , ";
-    out << s.particle1().position() - s.particle2().position() << " , ";
-    out << s.particle1().velocity() << " , ";
-    out << s.particle2().velocity();
+    for (const auto& particle : s.particles()) {
+        out << particle.position() << " , ";
+        out << particle.velocity() << " , ";
+    }
     return out;
 }
 }
@@ -54,24 +52,22 @@ void simulate(space::System& s, size_t years, size_t print_interval) {
 }
 
 int main() {
-    constexpr double earth_mass = 5.97237e24;     // mass in kg
-    constexpr double distance_to_sun = 147.095e9; // perihelion
-    constexpr double orbital_speed = 30.3e3;      // in m/s
+    constexpr double earth_mass = 5.97237e24;           // mass in kg
+    constexpr double distance_earth_to_sun = 147.095e9; // perihelion
+    constexpr double earth_orbital_speed = 30.3e3;      // in m/s
     constexpr double sun_mass = 1.9885e30;
 
     // earth positioned at the x axis with speed in the y direction
-    constexpr double m1 = earth_mass;
-    constexpr geometry::vec3d p1{ distance_to_sun, 0, 0 };
-    constexpr geometry::vec3d v1{ 0, orbital_speed, 0 };
+    constexpr geometry::vec3d earth_position{ distance_earth_to_sun, 0, 0 };
+    constexpr geometry::vec3d earth_velocity{ 0, earth_orbital_speed, 0 };
 
     // sun at the center of the reference plan
-    constexpr double m2 = sun_mass;
-    constexpr geometry::vec3d p2{ 0, 0, 0 };
-    constexpr geometry::vec3d v2{ 0, 0, 0 };
-    const space::Particle particle1(m1, p1, v1);
-    const space::Particle particle2(m2, p2, v2);
+    constexpr geometry::vec3d sun_position{ 0, 0, 0 };
+    constexpr geometry::vec3d sun_velocity{ 0, 0, 0 };
+    const space::Particle earth_particle(earth_mass, earth_position, earth_velocity);
+    const space::Particle sun_particle(sun_mass, sun_position, sun_velocity);
 
-    space::System s(particle1, particle2);
+    space::System s(sun_particle, earth_particle);
 
     constexpr size_t years_transient = 1500;
     constexpr size_t years_monitor = 200;
