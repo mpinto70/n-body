@@ -8,11 +8,9 @@ namespace space {
 
 class System {
 public:
-    System(Particle p1, Particle p2);
+    System(std::vector<Particle> particles);
 
     const std::vector<Particle>& particles() const { return particles_; }
-    const Particle& particle1() const { return particles_[0]; }
-    const Particle& particle2() const { return particles_[1]; }
 
     void step(double delta_t);
 

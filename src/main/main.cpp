@@ -67,7 +67,7 @@ int main() {
     const space::Particle earth_particle(earth_mass, earth_position, earth_velocity);
     const space::Particle sun_particle(sun_mass, sun_position, sun_velocity);
 
-    space::System s(sun_particle, earth_particle);
+    space::System s({ sun_particle, earth_particle });
 
     constexpr size_t years_transient = 1500;
     constexpr size_t years_monitor = 200;
