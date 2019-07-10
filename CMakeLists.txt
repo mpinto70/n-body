@@ -1,6 +1,6 @@
 
 cmake_minimum_required (VERSION 3.2)
-project (PROJECT_NAME_GOES_HERE VERSION 1.0.0 LANGUAGES CXX)
+project (N_Body VERSION 1.0.0 LANGUAGES CXX)
 
 # add support for CTest
 include(CTest)
