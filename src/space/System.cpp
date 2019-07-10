@@ -8,9 +8,6 @@ namespace {
 constexpr double G = 6.67430e-11;
 }
 
-// if it is trivially copyable there is no need to std::move the particles
-static_assert(std::is_trivially_copyable<Particle>::value);
-
 System::System(std::vector<Particle> particles)
       : particles_(std::move(particles)) {
 }
