@@ -12,6 +12,7 @@ add_custom_target(
         --suppress='*:${PROJECT_SOURCE_DIR}/gtest/*'
         --quiet
         --verbose
+        --inline-suppr
         -I ${PROJECT_SOURCE_DIR}/src
         ${PROJECT_SOURCE_DIR}/src
 )

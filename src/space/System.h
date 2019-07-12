@@ -8,7 +8,7 @@ namespace space {
 
 class System {
 public:
-    System(std::vector<Particle> particles);
+    explicit System(std::vector<Particle> particles);
 
     const std::vector<Particle>& particles() const { return particles_; }
 
