@@ -113,6 +113,8 @@ int main(int argc, char* argv[]) {
         return -2;
     }
 
+    std::cerr << "Reading configuration from " << config_file_name << "\n";
+
     std::vector<space::Particle> particles;
     std::string line;
     int line_number = 0;
@@ -137,17 +139,19 @@ int main(int argc, char* argv[]) {
             particles.emplace_back(body_name, body_mass, body_position, body_velocity);
         }
     } catch (const std::exception& e) {
-        std::cerr << e.what() << "(" << line_number << ") " << line << "\n";
+        std::cerr << e.what() << " [at line " << line_number << "]: [" << line << "]\n";
         return -3;
     }
+
+    std::cerr << "Starting the simulation\n";
 
     space::System s(particles);
 
     constexpr size_t years_transient = 100;
     constexpr size_t years_monitor = 200;
     constexpr size_t print_interval = 1;
-    std::cerr << "skipping transient period of " << years_transient << " years\n";
+    std::cerr << "Skipping transient period of " << years_transient << " years\n";
     simulate<false>(s, years_transient, print_interval);
-    std::cerr << "monitoring period of " << years_monitor << " years\n";
+    std::cerr << "Monitoring period of " << years_monitor << " years\n";
     simulate<true>(s, years_monitor, print_interval);
 }
