@@ -2,7 +2,10 @@
 #include "space/Particle.h"
 #include "space/System.h"
 
+#include <algorithm>
+#include <fstream>
 #include <iostream>
+#include <stdexcept>
 
 namespace geometry {
 std::ostream& operator<<(std::ostream& out, const vec3d& v) {
@@ -49,33 +52,96 @@ void simulate(space::System& s, size_t years, size_t print_interval) {
     }
     std::cerr << '\n';
 }
+
+std::string& ltrim(std::string& s) {
+    s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](auto c) { return not std::isspace(c); }));
+    return s;
 }
 
-int main() {
-    constexpr double sun_mass = 1.9885e30;
+std::string& rtrim(std::string& s) {
+    s.erase(std::find_if(s.rbegin(), s.rend(), [](auto c) { return not std::isspace(c); }).base(), s.end());
+    return s;
+}
 
-    // sun at the center of the reference plan
-    constexpr geometry::vec3d sun_position{ 0, 0, 0 };
-    constexpr geometry::vec3d sun_velocity{ 0, 12.4, 0 };
-    const space::Particle sun_particle("Sun", sun_mass, sun_position, sun_velocity);
+std::string& trim(std::string& s) {
+    return ltrim(rtrim(s));
+}
 
-    // earth positioned at the x(+) axis with speed in the y(+) direction
-    constexpr double earth_mass = 5.97237e24;           // mass in kg
-    constexpr double distance_earth_to_sun = 147.095e9; // perihelion
-    constexpr double earth_orbital_speed = 30.3e3;      // in m/s
-    constexpr geometry::vec3d earth_position{ distance_earth_to_sun, 0, 0 };
-    constexpr geometry::vec3d earth_velocity{ 0, earth_orbital_speed, 0 };
-    const space::Particle earth_particle("Earth", earth_mass, earth_position, earth_velocity);
+std::string trim_copy(std::string s) {
+    return trim(s);
+}
+std::string& remove_comment(std::string& s) {
+    s.erase(std::find(s.begin(), s.end(), '#'), s.end());
+    return s;
+}
 
-    // jupiter positioned at the x(-) axis with speed in the y(-) direction
-    constexpr double jupiter_mass = 1.8982E27;           // mass in kg
-    constexpr double distance_jupiter_to_sun = 778.57e9; // mean
-    constexpr double jupiter_orbital_speed = 13.07e3;    // in m/s
-    constexpr geometry::vec3d jupiter_position{ -distance_jupiter_to_sun, 0, 0 };
-    constexpr geometry::vec3d jupiter_velocity{ 0, -jupiter_orbital_speed, 0 };
-    const space::Particle jupiter_particle("Jupiter", jupiter_mass, jupiter_position, jupiter_velocity);
+std::vector<std::string> split(std::string line, char separator) {
+    std::vector<std::string> tokens;
+    while (not ltrim(line).empty()) {
+        auto pos = find(line.begin(), line.end(), separator);
+        tokens.emplace_back(line.begin(), pos);
+        if (pos != line.end())
+            ++pos;
+        line.erase(line.begin(), pos);
+    }
+    return tokens;
+}
 
-    space::System s({ sun_particle, earth_particle, jupiter_particle });
+geometry::vec3d to_vec3d(const std::string& token) {
+    const std::vector<std::string> coordinates = split(token, ',');
+    if (coordinates.size() != 3)
+        throw std::invalid_argument("Invalid vec 3d specification: " + token);
+
+    const auto x = std::stod(coordinates[0]);
+    const auto y = std::stod(coordinates[1]);
+    const auto z = std::stod(coordinates[2]);
+
+    return { x, y, z };
+}
+}
+
+int main(int argc, char* argv[]) {
+    if (argc != 2) {
+        std::cerr << "Usage: " << argv[0] << " <configuration file>\n";
+        return -1;
+    }
+
+    const std::string config_file_name = argv[1];
+    std::ifstream config_file(config_file_name);
+    if (!config_file) {
+        std::cerr << "Configuration file not found " << config_file_name << "\n";
+        return -2;
+    }
+
+    std::vector<space::Particle> particles;
+    std::string line;
+    int line_number = 0;
+    try {
+        while (std::getline(config_file, line)) {
+            ++line_number;
+            trim(remove_comment(line));
+
+            if (line.empty())
+                continue;
+
+            const auto columns = split(line, '|');
+            if (columns.size() != 4) {
+                throw std::invalid_argument("Invalid line");
+            }
+
+            const auto body_name = trim_copy(columns[0]);
+            const auto body_mass = std::stod(columns[1]);
+            const auto body_position = to_vec3d(columns[2]);
+            const auto body_velocity = to_vec3d(columns[3]);
+
+            particles.emplace_back(body_name, body_mass, body_position, body_velocity);
+        }
+    } catch (const std::exception& e) {
+        std::cerr << e.what() << "(" << line_number << ") " << line << "\n";
+        return -3;
+    }
+
+    space::System s(particles);
 
     constexpr size_t years_transient = 100;
     constexpr size_t years_monitor = 200;

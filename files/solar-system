@@ -1,0 +1,4 @@
+# body name | body mass  | body initial position | body initial velocity
+Sun         | 1.9885e30  | 0        , 0, 0       | 0, 12.4    , 0
+Earth       | 5.97237e24 | 147.095e9, 0, 0       | 0, 30.3e3  , 0
+Jupiter     | 1.8982e27  | -778.57e9, 0, 0       | 0, -13.07e3, 0
