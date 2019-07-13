@@ -70,6 +70,7 @@ std::string& trim(std::string& s) {
 std::string trim_copy(std::string s) {
     return trim(s);
 }
+
 std::string& remove_comment(std::string& s) {
     s.erase(std::find(s.begin(), s.end(), '#'), s.end());
     return s;
