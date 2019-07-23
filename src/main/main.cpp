@@ -149,7 +149,7 @@ int main(int argc, char* argv[]) {
     space::System s(particles);
 
     constexpr size_t years_transient = 0;
-    constexpr size_t years_monitor = 200;
+    constexpr size_t years_monitor = 1200;
     constexpr size_t print_interval = 1;
     std::cerr << "Skipping transient period of " << years_transient << " years\n";
     simulate<false>(s, years_transient, print_interval);
