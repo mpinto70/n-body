@@ -29,7 +29,6 @@ size_t day = 0;
 template <bool PRINT>
 void simulate(space::System& s, size_t years, size_t print_interval) {
     constexpr size_t days = 366;
-    constexpr double delta_t = 300; // 5 min
     size_t print_day = print_interval;
     for (size_t year = 0; year < years; ++year) {
         for (size_t d = 0; d < days; ++d, ++day) {
@@ -41,8 +40,8 @@ void simulate(space::System& s, size_t years, size_t print_interval) {
             }
             double t = 0;
             while (t < 3600 * 24) {
-                s.step(delta_t);
-                t += delta_t;
+                s.step();
+                t += s.delta_t();
             }
         }
         std::cerr << '.';
@@ -146,7 +145,8 @@ int main(int argc, char* argv[]) {
 
     std::cerr << "Starting the simulation\n";
 
-    space::System s(particles);
+    constexpr double delta_t = 300; // 5 min
+    space::System s(particles, delta_t);
 
     constexpr size_t years_transient = 0;
     constexpr size_t years_monitor = 1200;

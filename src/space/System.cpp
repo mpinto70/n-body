@@ -8,11 +8,11 @@ namespace {
 constexpr double G = 6.67430e-11;
 }
 
-System::System(std::vector<Particle> particles)
-      : particles_(std::move(particles)) {
+System::System(std::vector<Particle> particles, double delta_t)
+      : particles_(std::move(particles)), delta_t_(delta_t) {
 }
 
-void System::step(double delta_t) {
+void System::step() {
     constexpr geometry::vec3d ZERO{ 0, 0, 0 };
     std::vector<std::vector<geometry::vec3d>> forces_matrix(particles_.size());
     for (auto& forces_row : forces_matrix) {
@@ -39,7 +39,7 @@ void System::step(double delta_t) {
                 continue;
             force += forces_matrix[i][j];
         }
-        particles_[i].move(delta_t, force);
+        particles_[i].move(delta_t_, force);
     }
 }
 }

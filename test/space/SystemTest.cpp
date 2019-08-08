@@ -17,7 +17,7 @@ TEST(System, creation) {
     const Particle particle1(n1, m1, p1, v1);
     const Particle particle2(n2, m2, p2, v2);
 
-    const System s({ particle1, particle2 });
+    const System s({ particle1, particle2 }, 127.5);
     EXPECT_EQ(s.particles()[0].name(), n1);
     EXPECT_EQ(s.particles()[0].mass(), m1);
     EXPECT_EQ(s.particles()[0].position(), p1);
@@ -26,5 +26,6 @@ TEST(System, creation) {
     EXPECT_EQ(s.particles()[1].mass(), m2);
     EXPECT_EQ(s.particles()[1].position(), p2);
     EXPECT_EQ(s.particles()[1].velocity(), v2);
+    EXPECT_EQ(s.delta_t(), 127.5);
 }
 }
