@@ -1,11 +1,13 @@
 # Multiparticle gravity system
 
-Inspired by https://wordpress.com/read/blogs/158040751/posts/26
+Please, visit the [documentation](https://mpinto70.github.io/n-body/)
+
+Inspired by [these articles](https://wordpress.com/read/blogs/158040751/posts/26)
 
 ## How to get solar system information
-According to https://www.physicsforums.com/threads/current-velocities-of-planets.114165/.
-
-Send and email to horizons@ssd.jpl.nasa.gov with subject **job** and content
+According to [this post](https://www.physicsforums.com/threads/current-velocities-of-planets.114165/)
+you can obtain solar system bodies information by sending an email to
+horizons@ssd.jpl.nasa.gov with subject **job** and content
 
 ```
 !$$SOF
