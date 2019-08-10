@@ -1,5 +1,5 @@
-title : Multiparticle Gravity System
-author :
-  name : Marcelo Pinto
+title : N-Body Gravity System
+description: A multibody gravity simultaion system
+author : Marcelo Pinto
 
-theme: jekyll-theme-hacker
+theme: jekyll-theme-dinky

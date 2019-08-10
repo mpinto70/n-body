@@ -53,15 +53,14 @@ $$
 \mathbf{s}_i & = \mathbf{s}_{i_0} + \mathbf{v}_i t + \mathbf{\Delta v}_i \frac{t}{2} \tag{9} \\
 \mathbf{v}_i & = \mathbf{v}_{i_0} + \mathbf{\Delta v}_i  \tag{10} \\
 \mathbf{a}_i & = \frac {G\sum_{j=1}^{n} \frac {m_i m_j} {r_{ij}^2} \mathbf{u}_{ij}}{m_i}
-= G\sum_{j=1}^{n} \frac {m_j} {r_{ij}^2} \mathbf{u}_{ij}
 = G\sum_{j=1}^{n} \frac {\mathbf{u}_{ij}} {r_{ij}^2} m_j \tag{11} \\
 \end{align}
 $$
 
-It is necessary to calculate the change in velocity $$\mathbf{a}_i$$ (eq. 8), and then we can reuse this result to
-help in the calculations of next position $$\mathbf{s}_i$$ (eq. 9) and next velocity $$\mathbf{v}_i$$ (eq. 10). It is
-still necessary to calculate the acceleration $$\mathbf{a}_i$$ (eq. 11). For this we can use an asymmetric matrix and a
-vector (eq. 12):
+The velocity change $$\mathbf{\Delta v}_i$$ (eq. 8) has to be calculated to determine next velocity $$\mathbf{v}_i$$
+(eq. 10) and can be reused in next position calculation $$\mathbf{s}_i$$ (eq. 9). For acceleration caclulation
+$$\mathbf{a}_i$$ (eq. 11) eq. 12 can be used:
+
 $$
 \mathbf{a}_i = G
 \begin{bmatrix}
