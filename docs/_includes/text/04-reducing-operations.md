@@ -19,16 +19,14 @@ $$\mathbf{a}_i$$ (eq. 14) eq. 15 can be used:
 $$
 \mathbf{a}_i = G
 \begin{bmatrix}
-\mathbf{0}                        & \frac{\mathbf{u}_{12}}{r_{12}^2}  & \frac{\mathbf{u}_{13}}{r_{13}^2}  & \cdots & \frac{\mathbf{u}_{1n}}{r_{1n}^2} \\
-\frac{\mathbf{-u}_{12}}{r_{12}^2} & \mathbf{0}                        & \frac{\mathbf{u}_{23}}{r_{23}^2}  & \cdots & \frac{\mathbf{u}_{2n}}{r_{2n}^2} \\
-\frac{\mathbf{-u}_{13}}{r_{13}^2} & \frac{\mathbf{-u}_{23}}{r_{23}^2} & \mathbf{0}                        & \cdots & \frac{\mathbf{u}_{3n}}{r_{3n}^2} \\
-\vdots                            & \vdots                            & \vdots                            & \ddots & \vdots                           \\
-\frac{\mathbf{-u}_{1n}}{r_{1n}^2} & \frac{\mathbf{-u}_{2n}}{r_{2n}^2} & \frac{\mathbf{-u}_{3n}}{r_{3n}^2} & \cdots & \mathbf{0}                       \\
+\mathbf{0}                        & \frac{\mathbf{u}_{12}}{r_{12}^2}  & \cdots & \frac{\mathbf{u}_{1n}}{r_{1n}^2} \\
+\frac{\mathbf{-u}_{12}}{r_{12}^2} & \mathbf{0}                        & \cdots & \frac{\mathbf{u}_{2n}}{r_{2n}^2} \\
+\vdots                            & \vdots                            & \ddots & \vdots                           \\
+\frac{\mathbf{-u}_{1n}}{r_{1n}^2} & \frac{\mathbf{-u}_{2n}}{r_{2n}^2} & \cdots & \mathbf{0}                       \\
 \end{bmatrix}
 \begin{bmatrix}
 m_1    \\
 m_2    \\
-m_3    \\
 \vdots \\
 m_n    \\
 \end{bmatrix}
