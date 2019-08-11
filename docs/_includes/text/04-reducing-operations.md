@@ -7,8 +7,8 @@ $$
 \mathbf{\Delta v}_i & = \mathbf{a}_i t  \tag{11} \\
 \mathbf{s}_i & = \mathbf{s}_{i_0} + \mathbf{v}_i t + \mathbf{\Delta v}_i \frac{t}{2} \tag{12} \\
 \mathbf{v}_i & = \mathbf{v}_{i_0} + \mathbf{\Delta v}_i  \tag{13} \\
-\mathbf{a}_i & = \frac {G\sum_{j=1}^{n} \frac {m_i m_j} {r_{ij}^2} \mathbf{u}_{ij}}{m_i}
-= G\sum_{j=1}^{n} \frac {\mathbf{u}_{ij}} {r_{ij}^2} m_j \tag{14} \\
+\mathbf{a}_i & = \frac {G\sum_{j=1}^{n} \frac {m_i m_j} {r_{ij}^2} \mathbf{u}_{ij}}{m_i} \\
+& = G\sum_{j=1}^{n} \frac {\mathbf{u}_{ij}} {r_{ij}^2} m_j \tag{14} \\
 \end{align}
 $$
 
