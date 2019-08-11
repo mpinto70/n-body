@@ -17,7 +17,7 @@ $$
 
 Consider the figure below.
 
-<img src="assets/images/n-body.svg" width="50%">
+<img src="assets/images/n-body.svg">
 
 For the multibody interaction, eq. 3 and eq. 4 become:
 

@@ -13,7 +13,7 @@ constant](https://en.wikipedia.org/wiki/Gravitational_constant): $$G = 6.67430 \
 \frac{\mathrm{m}^3}{\mathrm{kg}\cdot\mathrm{s}^2}$$. The gravitational force is the same in both bodies and point from
 one body to the other.
 
-<img src="assets/images/2-body.svg" width="50%">
+<img src="assets/images/2-body.svg">
 
 Given the positions of $$p_1$$, $$\mathbf{s}_{1}$$, and $$p_2$$, $$\mathbf{s}_{2}$$, the
 vector pointing from $$p_1$$ to $$p_2$$ is
