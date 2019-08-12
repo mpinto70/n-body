@@ -4,8 +4,8 @@ In order to reduce the number of operations performed, I use some variations of 
 
 $$
 \begin{align}
-\mathbf{\Delta v}_i & = \mathbf{a}_i t  \tag{11} \\
-\mathbf{s}_i & = \mathbf{s}_{i_0} + \mathbf{v}_i t + \mathbf{\Delta v}_i \frac{t}{2} \tag{12} \\
+\mathbf{\Delta v}_i & = \mathbf{a}_i \Delta t  \tag{11} \\
+\mathbf{s}_i & = \mathbf{s}_{i_0} + \mathbf{v}_i \Delta t + \frac12 \mathbf{\Delta v}_i \Delta t \tag{12} \\
 \mathbf{v}_i & = \mathbf{v}_{i_0} + \mathbf{\Delta v}_i  \tag{13} \\
 \mathbf{a}_i & = \frac {G\sum_{j=1}^{n} \frac {m_i m_j} {r_{ij}^2} \mathbf{u}_{ij}}{m_i} \\
 & = G\sum_{j=1}^{n} \frac {\mathbf{u}_{ij}} {r_{ij}^2} m_j \tag{14} \\
@@ -14,7 +14,7 @@ $$
 
 The velocity change $$\mathbf{\Delta v}_i$$ (eq. 11) has to be calculated to determine next velocity $$\mathbf{v}_i$$
 (eq. 13) and can be reused in next position calculation $$\mathbf{s}_i$$ (eq. 12). For acceleration calculation
-$$\mathbf{a}_i$$ (eq. 14) eq. 15 can be used:
+$$\mathbf{a}_i$$ (eq. 14) eq. 15 I use the following matrix product:
 
 $$
 \mathbf{a}_i = G
