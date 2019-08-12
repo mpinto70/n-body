@@ -1,6 +1,6 @@
 ## Reducing the number of operations
 
-In order to reduce the number of operations performed, some simplifications are possible:
+In order to reduce the number of operations performed, I use some variations of equations of previous sections:
 
 $$
 \begin{align}
@@ -13,7 +13,7 @@ $$
 $$
 
 The velocity change $$\mathbf{\Delta v}_i$$ (eq. 11) has to be calculated to determine next velocity $$\mathbf{v}_i$$
-(eq. 13) and can be reused in next position calculation $$\mathbf{s}_i$$ (eq. 12). For acceleration caclulation
+(eq. 13) and can be reused in next position calculation $$\mathbf{s}_i$$ (eq. 12). For acceleration calculation
 $$\mathbf{a}_i$$ (eq. 14) eq. 15 can be used:
 
 $$

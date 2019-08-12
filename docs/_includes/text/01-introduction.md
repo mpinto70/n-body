@@ -2,7 +2,7 @@
 
 Given two bodies $$p_1$$ and $$p_2$$ of masses $$m_1$$ and $$m_2$$; separated by a distance $$r$$,
 [Newton's law of universal gravitation](https://en.wikipedia.org/wiki/Newton%27s_law_of_universal_gravitation)
-establishes that the gravitational force that atracts one body to the other is:
+establishes that the gravitational force that attracts one body to the other is:
 
 $$
 F = G \frac{m_1 m_2}{r^2} \tag{1}
@@ -24,7 +24,7 @@ And the unitary vector in the direction from $$p_1$$ to $$p_2$$ is
 
 $$\mathbf{u}_{12} = \frac {\mathbf{r}_{12}}{\sqrt {\mathbf{r}_{12} \cdot \mathbf{r}_{12}}}  \tag{3}$$
 
-The vectorial form of eq. 1 is:
+The vector form of eq. 1 is:
 
 $$\mathbf{F}_{12} = G \frac{m_1 m_2}{\mathbf{r}_{12} \cdot \mathbf{r}_{12}} \mathbf{u}_{12} \tag{4}$$
 

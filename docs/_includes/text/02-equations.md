@@ -6,20 +6,20 @@ $$
 \mathbf{F} = m \mathbf{a} \Rightarrow \mathbf{a} = \frac{\mathbf{F}}{m}  \tag{5}
 $$
 
-[Uniform acceleration equations](https://en.wikipedia.org/wiki/Equations_of_motion#Uniform_acceleration)
+[Constant linear acceleration
+equations](https://en.wikipedia.org/wiki/Equations_of_motion#Constant_linear_acceleration_in_any_direction)
 
 $$
 \begin{align}
-\mathbf{s} & = \mathbf{s}_{0} + \mathbf{v} t + \mathbf{a} \frac{t^2}{2} \tag{6} \\
+\mathbf{s} & = \mathbf{s}_{0} + \mathbf{v} t + \frac12 \mathbf{a}t^2 \tag{6} \\
 \mathbf{v} & = \mathbf{v}_{0} + \mathbf{a} t  \tag{7} \\
 \end{align}
 $$
 
-Consider the figure below.
 
 <img src="assets/images/n-body.svg">
 
-For the multibody interaction, eq. 3 and eq. 4 become:
+Considering multibody interaction illustrated in above figure, eq. 3 and eq. 4 become:
 
 $$
 \begin{align}
