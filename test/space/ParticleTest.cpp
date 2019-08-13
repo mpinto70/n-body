@@ -21,11 +21,11 @@ TEST(Particle, creation) {
 TEST(Particle, move) {
     const std::string name = "name";
     constexpr double mass = 123;
-    constexpr geometry::vec3d s0{10, 20, 30 };
+    constexpr geometry::vec3d s0{ 10, 20, 30 };
     constexpr geometry::vec3d v0{ -7, 12, -8 };
 
     constexpr double delta_t = 0.85;
-    constexpr geometry::vec3d a{7, 19, 20 };
+    constexpr geometry::vec3d a{ 7, 19, 20 };
 
     const geometry::vec3d delta_s = v0 * delta_t + a / 2 * delta_t * delta_t;
     const geometry::vec3d delta_v = a * delta_t;
@@ -42,13 +42,13 @@ TEST(Particle, move) {
 TEST(Particle, move_manual_calculation) {
     const std::string name = "name";
     constexpr double mass = 100;
-    constexpr geometry::vec3d s0{10, 15, 30 };
+    constexpr geometry::vec3d s0{ 10, 15, 30 };
     constexpr geometry::vec3d v0{ 2, 4, 6 };
 
-    constexpr geometry::vec3d a{3, 2, 1 };
+    constexpr geometry::vec3d a{ 3, 2, 1 };
     constexpr double delta_t = 2.5;
 
-    const geometry::vec3d delta_s = {14.375, 16.25, 18.125 };
+    const geometry::vec3d delta_s = { 14.375, 16.25, 18.125 };
     const geometry::vec3d delta_v = { 7.5, 5, 2.5 };
 
     Particle p(name, mass, s0, v0);

@@ -19,5 +19,6 @@ public:
 private:
     std::vector<Particle> particles_;
     double delta_t_;
+    std::vector<double> Gm_;
 };
 }
