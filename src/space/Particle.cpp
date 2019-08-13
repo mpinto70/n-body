@@ -10,14 +10,9 @@ Particle::Particle(std::string name, double mass, geometry::vec3d position, geom
       : name_(std::move(name)), mass_(mass), position_(position), velocity_(velocity) {
 }
 
-void Particle::move(double delta_t, const geometry::vec3d& force) {
-    // F = m*a                            => a = F/m                   (1)
-    //                                       dv = a*dt                 (2)
-    // p = p0 + v*dt + (a*dt^2)/2   - (2) => p = p0 + v*dt + dv*dt/2   (3)
-    // v = v0 + a*dt                - (2) => v = v0 + dv               (4)
-    const auto acceleration = force / mass_;                  // (1)
-    const auto delta_v = acceleration * delta_t;              // (2)
-    position_ += velocity_ * delta_t + delta_v * delta_t / 2; // (3)
-    velocity_ += delta_v;                                     // (4)
+void Particle::move(double delta_t, const geometry::vec3d& acceleration) {
+    const auto delta_v = acceleration * delta_t;      // (11)
+    position_ += (velocity_ + delta_v / 2) * delta_t; // (12)
+    velocity_ += delta_v;                             // (13)
 }
 }
