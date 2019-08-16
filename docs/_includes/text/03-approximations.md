@@ -8,4 +8,12 @@ during these increments. The consequence of this procedure is shown in the figur
 
 The dashed circle is where the body would really be after $$\Delta t = t_1 - t_0$$ time elapsed, but since I consider
 that the force $$\mathbf{F}$$ is constant during $$\Delta t$$ interval, the calculated position is the one shown by the
-filled green disk. Obviously, the smaller $$\Delta t$$, the smaller the deviation.
+filled green disk. The deviation $$\varepsilon$$ has the following relations:
+
+$$
+\begin{align}
+\varepsilon & \propto \Delta t       \tag{11} \\
+\varepsilon & \propto | \mathbf{v} | \tag{12} \\
+\varepsilon & \propto | \mathbf{F} | \tag{13} \\
+\end{align}
+$$
