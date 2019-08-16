@@ -12,8 +12,11 @@ filled green disk. The deviation $$\varepsilon$$ has the following relations:
 
 $$
 \begin{align}
-\varepsilon & \propto \Delta t       \tag{11} \\
-\varepsilon & \propto | \mathbf{v} | \tag{12} \\
-\varepsilon & \propto | \mathbf{F} | \tag{13} \\
+\varepsilon & \propto \Delta t                  \tag{11} \\
+\varepsilon & \propto | \mathbf{v} |            \tag{12} \\
+\varepsilon & \propto \textrm{orbit curvature}  \tag{13} \\
 \end{align}
 $$
+
+For all the factors affecting $$\varepsilon$$ $$\Delta t$$ is the only one that can be manipulated during the
+simulation.
