@@ -19,7 +19,7 @@ $$
 
 <img src="assets/images/n-body.svg">
 
-Considering multibody interaction illustrated in above figure, eq. 3 and eq. 4 become:
+Considering multi-body interaction illustrated in above figure, eq. 3 and eq. 4 become:
 
 $$
 \begin{align}

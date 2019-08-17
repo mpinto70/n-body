@@ -7,7 +7,7 @@ during these increments. The consequence of this procedure is shown in the figur
 <img src="assets/images/deviation.svg">
 
 The dashed circle is where the body would really be after $$\Delta t = t_1 - t_0$$ time elapsed, but since I consider
-that the force $$\mathbf{F}$$ is constant during $$\Delta t$$ interval, the calculated position is the one shown by the
+that force $$\mathbf{F}$$ is constant during $$\Delta t$$ interval, the calculated position is the one shown by the
 filled green disk. The deviation $$\varepsilon$$ has the following relations:
 
 $$
@@ -18,5 +18,4 @@ $$
 \end{align}
 $$
 
-For all the factors affecting $$\varepsilon$$ $$\Delta t$$ is the only one that can be manipulated during the
-simulation.
+Of all factors affecting $$\varepsilon$$, $$\Delta t$$ is the only one that can be manipulated during the simulation.
