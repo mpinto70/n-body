@@ -26,17 +26,14 @@ std::ostream& operator<<(std::ostream& out, const System& s) {
 
 namespace {
 size_t day = 0;
-template <bool PRINT>
 void simulate(space::System& s, size_t years, size_t print_interval) {
     constexpr size_t days = 366;
     size_t print_day = print_interval;
     for (size_t year = 0; year < years; ++year) {
         for (size_t d = 0; d < days; ++d, ++day) {
-            if constexpr (PRINT) {
-                if (--print_day == 0) {
-                    std::cout << day << "  ,  " << s << std::endl;
-                    print_day = print_interval;
-                }
+            if (--print_day == 0) {
+                std::cout << day << "  ,  " << s << std::endl;
+                print_day = print_interval;
             }
             double t = 0;
             while (t < 3600 * 24) {
@@ -46,9 +43,7 @@ void simulate(space::System& s, size_t years, size_t print_interval) {
         }
         std::cerr << '.';
     }
-    if constexpr (PRINT) {
-        std::cout << day << "  ,  " << s << std::endl;
-    }
+    std::cout << day << "  ,  " << s << std::endl;
     std::cerr << '\n';
 }
 
@@ -101,12 +96,14 @@ geometry::vec3d to_vec3d(const std::string& token) {
 }
 
 int main(int argc, char* argv[]) {
-    if (argc != 2) {
-        std::cerr << "Usage: " << argv[0] << " <configuration file>\n";
+    if (argc != 4) {
+        std::cerr << "Usage: " << argv[0] << " <configuration file> <years of observation> <delta t in seconds>\n";
         return -1;
     }
 
     const std::string config_file_name = argv[1];
+    const size_t years = std::stoul(argv[2]);
+    const double delta_t = std::stod(argv[3]);
     std::ifstream config_file(config_file_name);
     if (!config_file) {
         std::cerr << "Configuration file not found " << config_file_name << "\n";
@@ -145,14 +142,9 @@ int main(int argc, char* argv[]) {
 
     std::cerr << "Starting the simulation\n";
 
-    constexpr double delta_t = 300; // 5 min
     space::System s(particles, delta_t);
 
-    constexpr size_t years_transient = 0;
-    constexpr size_t years_monitor = 1200;
     constexpr size_t print_interval = 1;
-    std::cerr << "Skipping transient period of " << years_transient << " years\n";
-    simulate<false>(s, years_transient, print_interval);
-    std::cerr << "Monitoring period of " << years_monitor << " years\n";
-    simulate<true>(s, years_monitor, print_interval);
+    std::cerr << "Monitoring period of " << years << " years\n";
+    simulate(s, years, print_interval);
 }

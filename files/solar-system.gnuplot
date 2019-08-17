@@ -1,5 +1,6 @@
 set datafile separator ','
 set key off
+set autoscale xy
 
 splot ARG1 \
        every 30 using  ($8-$2): ($9-$3):($10-$4) with dots, \

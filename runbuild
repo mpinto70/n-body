@@ -55,7 +55,7 @@ elif [[ "$1" = "ctest" ]]; then
     cd ..
 elif [[ "$1" = "demo" ]]; then
     _do_build
-    ./bin/exe ./files/solar-system > /tmp/orbit.data
+    ./bin/exe ./files/solar-system > /tmp/orbit.data 1200 300
     gnuplot -persist -c files/solar-system.gnuplot /tmp/orbit.data
     rm -f /tmp/orbit.data
 elif [[ "$1" = "check" ]]; then

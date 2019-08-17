@@ -18,7 +18,8 @@ public:
 
 private:
     std::vector<Particle> particles_;
-    double delta_t_;
-    std::vector<double> Gm_;
+    const double delta_t_;
+    const std::vector<double> Gm_;
+    std::vector<std::vector<geometry::vec3d>> unity_matrix_;
 };
 }
