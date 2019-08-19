@@ -12,5 +12,4 @@ splot ARG1 \
     '' every 30 using ($44-$2):($45-$3):($46-$4) with dots, \
     '' every 30 using ($50-$2):($51-$3):($52-$4) with dots, \
     '' every 30 using ($56-$2):($57-$3):($58-$4) with dots, \
-    '' every 30 using ($62-$2):($63-$3):($64-$4) with dots
-
+    '' every 30 using ($62-$2):($63-$3):($64-$4) with dots  \

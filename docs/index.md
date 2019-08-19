@@ -13,3 +13,4 @@ This system was inspired by [these articles](https://wordpress.com/read/blogs/15
 {% include text/03-approximations.md      %}
 {% include text/04-reducing-operations.md %}
 {% include text/05-implementation.md      %}
+{% include text/06-simulations.md         %}
